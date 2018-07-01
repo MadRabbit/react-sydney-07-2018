@@ -1,0 +1,4 @@
+--require test/helper
+--reporter dot
+--recursive
+--timeout 3000
