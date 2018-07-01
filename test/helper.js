@@ -22,6 +22,8 @@ global.window = window;
 global.document = window.document;
 global.navigator = window.navigator;
 
+global.fetch = window.fetch = require('unfetch');
+
 /**
  * Enzyme setup
  */
@@ -37,12 +39,9 @@ Enzyme.configure({ adapter: new Adapter() });
  * GraphqlMock setup
  */
 const { default: GraphqlMock } = require('graphql-mock');
+const { typeDefs } = require('../src/graphql');
 
-const graphqlMock = exports.graphqlMock = new GraphqlMock(`
-  type Blah {
-    id: ID!
-  }
-`);
+const graphqlMock = exports.graphqlMock = new GraphqlMock(typeDefs);
 
 global.render = (element) =>
   Enzyme.mount(
