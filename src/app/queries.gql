@@ -1,0 +1,20 @@
+query TodosQuery {
+  todos {
+    id
+    name
+  }
+}
+
+mutation CreateMutation($name: String!) {
+  addEntry(name: $name) {
+    id
+    name
+  }
+}
+
+mutation ToggleMutation($id: ID!) {
+  toggleEntry(id: $id) {
+    id
+    name
+  }
+}

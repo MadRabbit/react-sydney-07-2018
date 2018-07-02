@@ -39,7 +39,7 @@ Enzyme.configure({ adapter: new Adapter() });
  * GraphqlMock setup
  */
 const { default: GraphqlMock } = require('graphql-mock');
-const { typeDefs } = require('../src/graphql');
+const { typeDefs } = require('../src/server');
 
 const graphqlMock = exports.graphqlMock = new GraphqlMock(typeDefs);
 
@@ -50,3 +50,7 @@ global.render = (element) =>
       children: element
     })
   );
+
+process.nextTick(() => {
+  beforeEach(() => graphqlMock.reset());
+});
